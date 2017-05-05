@@ -65,10 +65,16 @@ Tumblr has a lot of different types of posts. The ones currently supported by Tu
  * Photo (single photos only)
  * Quote
  * Link
- * (to-do: Video)
 
 
 ## Notes
 
 The default encoding is UTF-8. If you wish to change this, you can simply modify or override the
 global `ENCODING` variable.
+
+## To-Do
+
+- Add support for video posts.
+- Add proper support for multi-image posts (at the moment I think it only grabs the first image).
+- Update to Phython 3 syntax?
+- I may actually have more requirements than just Beautiful Soup--check.
