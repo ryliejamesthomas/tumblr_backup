@@ -1,10 +1,11 @@
 Copyright &copy; 2009, [Brendan Doms](http://www.bdoms.com/)  
 Licensed under the [MIT license](http://www.opensource.org/licenses/MIT)
 
+NB: This is a fork with more limited functionality than the trunk! You may not find it useful, it's tweaked for my use and comprehension. Support for tags and CSV output are removed, for example.
 
 # Tumblr Backup
 
-Tumblr Backup is a tool for making a local backup of your Tumblr account.
+Tumblr Backup is a tool for making an HTML backup of your Tumblr posts.
 
 
 ## Setup
@@ -21,25 +22,27 @@ pip install -r requirements.txt
 
 ## Use
 
+If you have Python 3 installed make sure you use 2!
+
+By default, a new folder with post data saved in individual HTML files will be created,
+and resources like images will be saved in another subfolder of the parent:
+```
+script folder
+	|_ 'output' folder
+		|_ posts put into folders by year
+		|_ images folder
+```
+
 To backup your account, just include the URL of your Tumblr website:
 
 ```bash
-python tumblr_backup.py example.tumblr.com
+python2 tumblr_backup.py example.tumblr.com
 ```
 
 If you use a custom domain, then that will also work:
 
 ```bash
-python tumblr_backup.py www.example.com
-```
-
-By default, a new folder with post data saved in individual HTML files will be created,
-and resources like images will be saved in appropriately named subfolders.
-The alternative is to save the post data in a single CSV file,
-behavior which you can specify via the command line option `csv` like so:
-
-```bash
-python tumblr_backup.py --csv=true example.tumblr.com
+python2 tumblr_backup.py www.example.com
 ```
 
 You can also specify a different directory to save to with the command line option `save_folder`:
@@ -59,21 +62,13 @@ python tumblr_backup.py --start_post=N example.tumblr.com
 Tumblr has a lot of different types of posts. The ones currently supported by Tumblr Backup are:
 
  * Regular
- * Photo
+ * Photo (single photos only)
  * Quote
  * Link
-
-
-## Tags
-
-Tumblr allows you to add "tags" to posts. Tumblr Backup supports tags on any post type by simply
-adding a list of all the tags for a post to the bottom of the page if in HTML mode,
-or as its own pipe ( | ) separated list if in CSV mode.
+ * (to-do: Video)
 
 
 ## Notes
-
-Private accounts requiring authentication are not currently supported.
 
 The default encoding is UTF-8. If you wish to change this, you can simply modify or override the
 global `ENCODING` variable.
